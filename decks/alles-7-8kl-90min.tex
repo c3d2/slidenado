@@ -1,33 +1,3 @@
-\documentclass[12pt, xcolor={svgnames,table}]{beamer}
-%\documentclass[20pt,handout]{beamer}
-\usetheme{Darmstadt}
-\usepackage{graphicx}
-%\usepackage[german]{babel}
-\usepackage{ngerman}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{tikz}
-\setbeamertemplate{footline}[frame number]
-
-\newcommand{\cc}[1]{\includegraphics[height=4mm]{img/#1.png}\hspace{1mm}}
-\usepackage{ifthen}
-\newcommand{\license}[2][]{\\#2\ifthenelse{\equal{#1}{}}{}{\\\scriptsize\url{#1}}}
-\usepackage{textcomp}
-\usepackage{hyperref}
-
-\pgfdeclareimage[height=.6cm]{c3d2logo}{./img/c3d2.pdf}
-
-\pgfdeclarelayer{foreground}
-\pgfsetlayers{main,foreground}
-\logo{\pgfputat{\pgfxy(-1,0)}{\pgfbox[center,base]{\pgfuseimage{c3d2logo}}}}
-
-\title{Digitale Selbstverteidigung}
-\author{\small Marius \\\large Chaos Computer Club Dresden}
-\date{22.06.2016}
-
-\begin{document}
-\maketitle
-
 \section{Einleitung}
 \subsection{}
 
@@ -100,5 +70,3 @@
     CMS Dresden: schule@c3d2.de
   \end{center}
 \end{frame}
-
-\end{document}
