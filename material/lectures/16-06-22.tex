@@ -1,0 +1,104 @@
+\documentclass[12pt, xcolor={svgnames,table}]{beamer}
+%\documentclass[20pt,handout]{beamer}
+\usetheme{Darmstadt}
+\usepackage{graphicx}
+%\usepackage[german]{babel}
+\usepackage{ngerman}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\setbeamertemplate{footline}[frame number]
+
+\newcommand{\cc}[1]{\includegraphics[height=4mm]{img/#1.png}\hspace{1mm}}
+\usepackage{ifthen}
+\newcommand{\license}[2][]{\\#2\ifthenelse{\equal{#1}{}}{}{\\\scriptsize\url{#1}}}
+\usepackage{textcomp}
+\usepackage{hyperref}
+
+\pgfdeclareimage[height=.6cm]{c3d2logo}{./img/c3d2.pdf}
+
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{main,foreground}
+\logo{\pgfputat{\pgfxy(-1,0)}{\pgfbox[center,base]{\pgfuseimage{c3d2logo}}}}
+
+\title{Digitale Selbstverteidigung}
+\author{\small Marius \\\large Chaos Computer Club Dresden}
+\date{22.06.2016}
+
+\begin{document}
+\maketitle
+
+\section{Einleitung}
+\subsection{}
+
+% ccc/ccc_bundesweit.tex
+% ccc/ccc_lokal.tex
+% motivation/stasi_vs_nsa.tex
+
+\section{Internet}
+\subsection{}
+
+% internet/kommunikationsmodelle.tex
+% internet/server_kabel_router.tex
+
+\section{Gerätesicherheit}
+\subsection{}
+
+% geraetesicherheit/unerwuenschte_funktionalitaet.tex
+% geraetesicherheit/schutzmoeglichkeiten.tex
+% geraetesicherheit/app_permissions.tex
+% geraetesicherheit/foss_programme_apps.tex
+
+\section{Verschlüsselung}
+\subsection{}
+
+% verschluesselung/ssl.tex
+% verschluesselung/https_everywhere.tex
+% verschluesselung/e2e.tex
+% verschluesselung/messenger_vergleich.tex
+
+\section{Metadaten}
+\subsection{}
+
+% metadaten/vds.tex
+% metadaten/location_heatmap.tex
+% metadaten/zeitstempel.tex
+% metadaten/antitracking.tex
+% metadaten/alternative_dienste.tex
+% metadaten/nextcloud.tex
+
+\section{Soziale Netzwerke}
+\subsection{}
+
+% soziale_netzwerke/umfrage.tex
+% soziale_netzwerke/geschaeftsmodelleraten.tex
+% soziale_netzwerke/umgangsformen.tex
+
+\section{Verhalten}
+\subsection{}
+
+% verhalten/datensparsamkeit.tex
+% verhalten/passwoerter.tex
+
+\section{Fazit}
+\subsection{}
+
+\begin{frame}
+  \frametitle{Fazit}
+  \begin{center}
+    \begin{itemize}
+      \item Wegverschlüsselung nutzen (auf HTTPS achten, Plugin: HTTPS Everywhere)
+      \item Ende-zu-Ende-Verschlüsselung nutzen (Email: GPG, Messenger: Signal)
+      \item Metadaten vermeiden (z.B. Alternative Dienste, Plugins: Privacy Badger oder Disconnect)
+      \item Soziale Netzwerke bewusst nutzen, auf Umgangsformen achten
+      \item Wichtig: Datenvermeidung und sichere Passwörter
+    \end{itemize}
+
+    \vspace{5mm}
+    \href{https://github.com/cms/2016_05_04_kleinzschachwitz/}{Folien}: \href{https://creativecommons.org/licenses/by-sa/4.0/}{\cc{by-sa}} Chaos Computer Club Dresden \\
+    \vspace{3mm}
+    CMS Dresden: schule@c3d2.de
+  \end{center}
+\end{frame}
+
+\end{document}
