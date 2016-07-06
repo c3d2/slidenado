@@ -1,6 +1,10 @@
-ALL: $(patsubst dates/%.yaml, dates/%, $(wildcard dates/*.yaml))
+TARGETS=$(patsubst dates/%.yaml, dates/%, $(wildcard dates/*.yaml))
+ALL: clean ${TARGETS}
 
-dates/%: dates/%.yaml
+clean:
+	rm -rf ${TARGETS}
+
+dates/%:
 	mkdir -p $@
-	./generate.rb $< $@
+	./generate.rb $@.yaml $@
 	make -C $@
