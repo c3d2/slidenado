@@ -1,5 +1,6 @@
-ALL: $(patsubst lectures/%.yaml, lectures/%, $(wildcard lectures/*.yaml))
+ALL: $(patsubst dates/%.yaml, dates/%, $(wildcard dates/*.yaml))
 
-lectures/%: lectures/%.yaml
-	mkdir $@
+dates/%: dates/%.yaml
+	mkdir -p $@
 	./generate.rb $< $@
+	make -C $@

@@ -28,11 +28,11 @@
 \begin{document}
 \maketitle
 
-<% @deck.each do |section, snippets| %>
+<% deck.each do |section, snippets| %>
   \section{<%= section %>}
   \subsection{}
   <% snippets.each do |snippet| %>
-    \include{<%= snippet %>}
+    \input{<%= snippet.sub(/\.tex$/, "") %>}
   <% end %>
 <% end %>
 
