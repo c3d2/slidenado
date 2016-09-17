@@ -26,4 +26,7 @@ makefile_template = ERB.new(File.read("makefile_template.erb"))
 File.write File.join(outdir_path, "Makefile"), makefile_template.result
 
 latex_template = ERB.new(File.read("latex_template.tex.erb"))
+notes=false
 File.write File.join(outdir_path, "slides.tex"), latex_template.result
+notes=true
+File.write File.join(outdir_path, "slides_with_notes.tex"), latex_template.result
