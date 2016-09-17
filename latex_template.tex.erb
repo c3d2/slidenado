@@ -8,8 +8,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
 \setbeamertemplate{footline}[frame number]
+\usepackage{pgfpages}
+<% if notes do %>
+\setbeameroption{show notes on second screen = right}
+<% end %>
 
-\newcommand{\cc}[1]{\includegraphics[height=4mm]{img/#1.png}\hspace{1mm}}
+\newcommand{\cc}[1]{\includegraphics[height=4mm]{../../img/#1.png}\hspace{1mm}}
 \usepackage{ifthen}
 \newcommand{\license}[2][]{\\#2\ifthenelse{\equal{#1}{}}{}{\\\scriptsize\url{#1}}}
 \usepackage{textcomp}
