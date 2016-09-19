@@ -1,5 +1,5 @@
 TARGETS=$(patsubst dates/%.yaml, dates/%, $(wildcard dates/*.yaml))
-ALL: clean ${TARGETS}
+ALL: ${TARGETS}
 
 clean:
 	rm -rf ${TARGETS}
