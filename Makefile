@@ -7,4 +7,4 @@ clean:
 dates/%:
 	mkdir -p $@
 	./generate.rb $@.yaml $@
-	make -C $@
+	$(MAKE) -C $@
