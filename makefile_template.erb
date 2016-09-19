@@ -1,4 +1,4 @@
-all: slides.pdf slides_with_notes.pdf
+ALL: slides.pdf slides_with_notes.pdf
 
 slides.pdf: slides.tex <%= deck_files.join " " %>
 	pdflatex -draftmode $<
