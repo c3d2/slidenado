@@ -12,4 +12,4 @@ dates/%/Makefile: dates/%.yaml $(wildcard decks/*.yaml)
 	./generate.rb $< $(shell dirname $@)
 
 dates/%/ALL: dates/%/Makefile
-	$(MAKE) -C $(shell dirname $@) $(shell basename $@)
+	$(MAKE) -C $(shell dirname $@)
