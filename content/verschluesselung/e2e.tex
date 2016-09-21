@@ -5,6 +5,8 @@
     \end{center}
 \end{frame}
 
+\note{Ende-zu-Ende-Verschlüsselung ist die einzige wirklich wirksame, weil sie nicht nur Angreifer im offenen Internet ausschließt sondern auch den Dienstbetreiber selbst. Diesem muss man jedoch oft trotzdem ein gewisses Vertrauen entgegenbringen, weil der Betreiber in vielen Fällen die Software ausliefert oder die Leute miteinandern in Verbindung bringt. Eine sinnvolle Nutzung ist nur gewährleistet, wenn die Software Open Source ist und die Nutzer sich gegenseitig ``bestätigen'' können - meist über eine Sicherheitsfrage oder einen scannbaren Barcode.}
+
 \begin{frame}
   \frametitle{Email-Verschlüsselung (E2E): PGP}
   \begin{center}
@@ -14,6 +16,8 @@
     \end{itemize}
   \end{center}
 \end{frame}
+
+\note{PGP ist die bekannteste Möglichkeit für E2E-Verschlüsselung von Emails. Das dafür notwendige Programm GnuPG bzw. GPG ist ist Open Source, man kann sich gegenseitig Bestätigen und es gibt Plugins für Thunderbird und Outlook. Sogar Webmail (z.B. Gmail) kann man damit absichern, wenn man das Browseraddon Mailvelope benutzt. Web.de und GMX haben dafür sogar eine einfache Einrichtungsmöglichkeit auf der Website geschaffen, aber es funktioniert auch sonst überall. GPG ist jedoch trotzdem nicht für einfache Benutzung bekannt, der Link erklärt wie man es einrichtet.}
 
 \begin{frame}
   \frametitle{Jabber: Conversations, ChatSecure}
@@ -25,6 +29,8 @@
     \url{https://xmpp.net/directory.php}
 \end{frame}
 
+\note{Einfacher ist die Nutzung von E2E-Verschlüsselung bei diversen Messengern. Jabber, auch XMPP genannt, ist eine gute Option, weil es ein offenes Protokoll wie Email ist. Man kann sich seinen Anbieter selbst aussuchen und hat dann einen Nutzernamen, der so wie eine Emailadresse aussieht, z.B. thomas@jabber.de. Eine Liste mit Jabberservern und ihre Qualität ist unter dem Link zu finden.}
+
 \begin{frame}
   \frametitle{Signal}
     \begin{center}
@@ -33,3 +39,5 @@
       \includegraphics[height=6cm]{../../img/signal2.png}
     \end{center}
 \end{frame}
+
+\note{Noch einfacher nutzbar ist Signal, ein Open Source und E2E-verschlüsselter Messenger, der von einer gemeinnützigen Organisation betrieben wird und sogar von Edward Snowden selbst empfohlen wird. Es funktioniert sehr ähnlich wie Whatsapp und kann auch Bilder und Videos verschicken. Ein Nachteil ist jedoch, dass es trotzdem ein zentraler Dienst ist und man sich nicht wie bei Jabber oder Email seinen Anbieter und damit auch den Ort an dem die Daten (z.B. die Freundesliste) liegen aussuchen kann.}
