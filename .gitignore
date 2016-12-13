@@ -1,2 +1,4 @@
 dates/*
 !dates/*.yaml
+decks/*
+!decks/*.yaml

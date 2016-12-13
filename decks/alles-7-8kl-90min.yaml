@@ -15,7 +15,7 @@ Gerätesicherheit:
   - geraetesicherheit/foss_programme_apps.tex
 
 Verschlüsselung:
-  - verschluesselung/ssl.tex
+  - verschluesselung/tls.tex
   - verschluesselung/https_everywhere.tex
   - verschluesselung/e2e.tex
   - verschluesselung/messenger_vergleich.tex
