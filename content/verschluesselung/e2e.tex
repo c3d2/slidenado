@@ -5,10 +5,34 @@
     \end{center}
 \end{frame}
 
-\note{Ende-zu-Ende-Verschlüsselung ist die einzige wirklich wirksame, weil sie nicht nur Angreifer im offenen Internet ausschließt sondern auch den Dienstbetreiber selbst. Diesem muss man jedoch oft trotzdem ein gewisses Vertrauen entgegenbringen, weil der Betreiber in vielen Fällen die Software ausliefert oder die Leute miteinandern in Verbindung bringt. Eine sinnvolle Nutzung ist nur gewährleistet, wenn die Software Open Source ist und die Nutzer sich gegenseitig ``bestätigen'' können - meist über eine Sicherheitsfrage oder einen scannbaren Barcode.}
+\note{Ende-zu-Ende-Verschlüsselung ist die einzige wirklich wirksame, weil sie nicht nur Angreifer im offenen Internet ausschließt sondern auch den Dienstbetreiber selbst. Diesem muss man jedoch oft trotzdem ein gewisses Vertrauen entgegenbringen, weil der Betreiber in vielen Fällen die Software ausliefert oder die Leute miteinandern in Verbindung bringt. Eine sinnvolle Nutzung ist nur gewährleistet, wenn die Software Open Source ist und die Nutzer sich gegenseitig ``bestätigen'' können --- meist über eine Sicherheitsfrage oder einen scannbaren Barcode.}
 
 \begin{frame}
-  \frametitle{Email-Verschlüsselung (E2E): PGP}
+  \frametitle{Identität}
+    \begin{center}
+      \includegraphics[height=6cm]{../../img/conversations-identity.jpg}
+      \vspace{2cm}
+      \includegraphics[height=6cm]{../../img/signal-identity.jpg}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{PGP (Pretty Good Privacy)}
+  \begin{center}
+    \includegraphics[height=0.1\textheight]{../../img/gpg.png}
+  \end{center}
+  \begin{itemize}
+    \item<2->Hauptsächlich für Emailverschlüsselung genutzt
+    \item<3->Integration in Thunderbird (Enigmail), Outlook (Gpg4win), online mail (Mailvelope)
+    \item<4->Vorteile: Gilt seit Jahr(zehnt)en als sicher, 
+    \item<5->Schwer benutzbar, keine ``Forward Secrecy''
+  \end{itemize}
+\end{frame}
+
+\note{PGP ist die bekannteste Möglichkeit für E2E-Verschlüsselung von Emails. Das dafür notwendige Programm GnuPG bzw. GPG ist ist Open Source, man kann sich gegenseitig Bestätigen und es gibt Plugins für Thunderbird und Outlook. Sogar Webmail (z.B. Gmail) kann man damit absichern, wenn man das Browseraddon Mailvelope benutzt. Web.de und GMX haben dafür sogar eine einfache Einrichtungsmöglichkeit auf der Website geschaffen, aber es funktioniert auch sonst überall. GPG ist jedoch trotzdem nicht für einfache Benutzung bekannt, der Link erklärt wie man es einrichtet.}
+
+\begin{frame}
+  \frametitle{PGP:\@ Email-Verschlüsselung}
   \begin{center}
     \includegraphics[height=0.5\textheight]{../../img/emailselfdefense.png}
     \begin{itemize}
@@ -17,12 +41,32 @@
   \end{center}
 \end{frame}
 
-\note{PGP ist die bekannteste Möglichkeit für E2E-Verschlüsselung von Emails. Das dafür notwendige Programm GnuPG bzw. GPG ist ist Open Source, man kann sich gegenseitig Bestätigen und es gibt Plugins für Thunderbird und Outlook. Sogar Webmail (z.B. Gmail) kann man damit absichern, wenn man das Browseraddon Mailvelope benutzt. Web.de und GMX haben dafür sogar eine einfache Einrichtungsmöglichkeit auf der Website geschaffen, aber es funktioniert auch sonst überall. GPG ist jedoch trotzdem nicht für einfache Benutzung bekannt, der Link erklärt wie man es einrichtet.}
+\begin{frame}
+  \frametitle{OTR (Off the Record)}
+  \begin{itemize}
+    \item<2->Genutzt für Chat/Messaging (z.B. in Jabber/XMPP)
+    \item<3->Vorteile: Forward Secrecy
+    \item<4->Nachteile: Kein Multi-Device, keine Offlinenachrichten
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Signalprotokoll}
+  \begin{center}
+    \includegraphics[height=0.2\textheight]{../../img/signal-logo.png}
+  \end{center}
+  \begin{itemize}
+    \item<2->Eingeführt vom Signal Messenger
+    \item<3->Mittlerweile auch von Whatsapp und anderen Messengern benutzt
+    \item<4->Bei Jabber als OMEMO bekannt
+    \item<5->Vorteile: Forward Secrecy, Multi-Device, Offlinenachrichten
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{Jabber: Conversations, ChatSecure}
     \begin{center}
-      \includegraphics[height=6cm]{../../img/conversations.png}
+      \includegraphics[height=6cm]{../../img/conversations.jpg}
       \hspace{0.5cm}
       \includegraphics[height=6cm]{../../img/chatsecure.png}
     \end{center}
@@ -34,9 +78,9 @@
 \begin{frame}
   \frametitle{Signal}
     \begin{center}
-      \includegraphics[height=6cm]{../../img/signal1.png}
+      \includegraphics[height=6cm]{../../img/signal-android.png}
       \hspace{0.5cm}
-      \includegraphics[height=6cm]{../../img/signal2.png}
+      \includegraphics[height=6cm]{../../img/signal-ios.jpg}
     \end{center}
 \end{frame}
 
