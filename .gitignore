@@ -2,3 +2,5 @@ dates/*
 !dates/*.yaml
 decks/*
 !decks/*.yaml
+*.aux
+*.log
