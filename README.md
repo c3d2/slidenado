@@ -4,8 +4,8 @@ Slide Generator, primarily for Chaos macht Schule
 
 ## Abhängigkeiten
 
-* `make`
 * `pdflatex`, z.B. via TeXLive
+* `make` (optional)
 
 ## Nutzung
 
