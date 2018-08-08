@@ -1,14 +1,25 @@
 # slidenado
+
 Slide Generator, primarily for Chaos macht Schule
 
 ## Abhängigkeiten
 
-* make
-* ruby
-* pdflatex (z.B. von texlive)
+* `make`
+* `pdflatex`, z.B. via TeXLive
 
 ## Nutzung
 
-Die vorhandenen Vortrags-Konfigurationen werden mit `make` gebaut.
+Alle Präsentation können direkt als LaTeX-Datei gebaut werden.  Entweder eine
+Datei in einem TeX-Editor der Wahl öffnen und dort übersetzen, oder auf der
+Kommandozeile zum Beispiel folgendes aufrufen:
 
-Eigene Zusammenstellungen können in einem separaten Verzeichnis mithilfe der yaml-Dateien konfiguriiert werden.  Als Anhalt bitte die vorhandenen decks verwenden.
+    cd presentations
+    pdflatex 2017-05-20_medinetzkongress.tex
+
+Alternativ kann auch das Makefile benutzt werden:
+
+    make presentations/2017-05-20_medinetzkongress.pdf
+
+Präsentationen mit Notizen dazu können erzeugt werden, indem im Aufruf der
+Dokumentenklasse als optionales Argument `notes` hinzugefügt wird.
+
