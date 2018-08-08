@@ -1,6 +1,9 @@
-dates/*
-!dates/*.yaml
-decks/*
-!decks/*.yaml
 *.aux
 *.log
+*.toc
+*.nav
+*.snm
+*.out
+*.synctex.gz
+/presentations/*.pdf
+/presentations/auto
