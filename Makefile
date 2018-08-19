@@ -1,3 +1,6 @@
+# Note: this whole makefile is a huge hack, is highly unportable, and probably
+# won’t even do what it’s supposed to do.  So, use with care, have fun :)
+
 PRESENTATIONS=$(patsubst %.tex, %.pdf, $(wildcard presentations/*.tex))
 BUILD_DIR=build
 BUILD_DECKS=$(subst presentations/,$(BUILD_DIR)/,$(wildcard presentations/content/*))
