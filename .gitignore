@@ -7,3 +7,4 @@
 *.synctex.gz
 /presentations/*.pdf
 /presentations/auto
+/presentations/build/
