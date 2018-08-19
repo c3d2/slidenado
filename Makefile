@@ -11,13 +11,26 @@ clean:
 distclean: clean
 	rm -f presentations/*.pdf
 
+# A rule to make build directories when needed; the call to .SECONDARY ensures
+# that these directories are not deleted when they are generated as intermediate
+# targets
+
 .SECONDARY: $(BUILD_DECKS)
 presentations/$(BUILD_DIR)/%:
 	mkdir -p $@
 
+# Extract dependencies for presentations by looking at the source code and
+# extracting all calls to \includedeck from them; it returns a list of elements
+# like ’presentations/content/ccc/ccc_lokal.tex’
+
 define presentation_dependencies
   $(shell perl -ne '/includedeck\{(.*)\}/ && print "presentations/content/", $$1, ".tex "' $(1))
 endef
+
+# This template is called with arguments like ‘presentation/xxx.pdf’; it
+# generates a rule that dependes on the corresponding tex file as well as on all
+# decks used in that tex file; dependencies are of the form
+# ‘content/ccc/ccc_lokal.tex’
 
 define PRESENTATION_template
 .ONESHELL: $(1)
