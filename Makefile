@@ -1,6 +1,6 @@
 PRESENTATIONS=$(patsubst %.tex, %.pdf, $(wildcard presentations/*.tex))
 BUILD_DIR=build
-BUILD_DECKS=$(subst presentations, presentations/$(BUILD_DIR), $(wildcard presentations/content/*))
+BUILD_DECKS=$(subst presentations/,$(BUILD_DIR)/,$(wildcard presentations/content/*))
 LATEX=pdflatex -output-directory $(BUILD_DIR)
 
 all: ${PRESENTATIONS}
@@ -10,14 +10,6 @@ clean:
 
 distclean: clean
 	rm -f presentations/*.pdf
-
-# A rule to make build directories when needed; the call to .SECONDARY ensures
-# that these directories are not deleted when they are generated as intermediate
-# targets
-
-.SECONDARY: $(BUILD_DECKS)
-presentations/$(BUILD_DIR)/%:
-	mkdir -p $@
 
 # Extract dependencies for presentations by looking at the source code and
 # extracting all calls to \includedeck from them; it returns a list of elements
@@ -37,6 +29,7 @@ define PRESENTATION_template
 $(1): $(subst .pdf,.tex,$(1)) $(call presentation_dependencies,$(subst .pdf,.tex,$(1)))
 	echo $$^
 	cd presentations
+	mkdir -p $(BUILD_DECKS)
 	$(LATEX) $$(notdir $$<)
 	$(LATEX) $$(notdir $$<)
 	mv $(subst presentations/,$(BUILD_DIR)/,$(1)) .
