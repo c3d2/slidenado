@@ -18,6 +18,9 @@ distclean: clean
 # extracting all calls to \includedeck from them; it returns a list of elements
 # like ’presentations/content/ccc/ccc_lokal.tex’
 
+# Yes, we are using perl: a system that has make probably also has perl; if not,
+# blame me.
+
 define presentation_dependencies
   $(shell perl -ne '/includedeck\{(.*)\}/ && print "presentations/content/", $$1, ".tex "' $(1))
 endef
@@ -51,7 +54,7 @@ $(1): $(shell perl -ne '/includegraphics[^\{]*\{([^\}]*)\}/ && print "presentati
 	test -f $(1) && touch $(1)
 endef
 
-# Files contained in decks are only considered in the top-level directory
+# Files contained in decks are only considered at top-level.
 
 $(foreach deck, $(wildcard presentations/content/*/*.tex), \
   $(eval $(call DECK_template, $(deck))))
