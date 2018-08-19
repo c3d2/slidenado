@@ -15,9 +15,14 @@ distclean: clean
 presentations/$(BUILD_DIR)/%:
 	mkdir -p $@
 
+define presentation_dependencies
+	$(shell cat $(1) | perl -ne '/includedeck\{(.*)\}/ && print "presentations/content/", $$1, ".tex "')
+endef
+
 define PRESENTATION_template
 .ONESHELL: $(1)
-$(1): $(subst .pdf,.tex,$(1)) $(BUILD_DECKS)
+$(1): $(subst .pdf,.tex,$(1)) $(call presentation_dependencies,$(subst .pdf,.tex,$(1)))
+	echo $$^
 	cd presentations
 	$(LATEX) $$(notdir $$<)
 	$(LATEX) $$(notdir $$<)
