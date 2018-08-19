@@ -42,13 +42,13 @@ $(foreach presentation, $(PRESENTATIONS), \
   $(eval $(call PRESENTATION_template, $(presentation))))
 
 # This template is called with a single argument like
-# ‘presentations/content/ccc/ccc_bundesweit.tex’; it generates a rule that does
-# nothing so far.  In the future, it could depende on all images used by the tex
-# file.
+# ‘presentations/content/ccc/ccc_bundesweit.tex’; it generates a rule that
+# dependes on all images used by the tex file.  The actual recipe just checks
+# whether the tex file is existent and updates the timestamp.
 
 define DECK_template
-$(1):
-	:
+$(1): $(shell perl -ne '/includegraphics[^\{]*\{([^\}]*)\}/ && print "presentations/", $$1, " "' $(1))
+	test -f $(1) && touch $(1)
 endef
 
 # Files contained in decks are only considered in the top-level directory
