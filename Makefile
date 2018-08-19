@@ -6,7 +6,7 @@ BUILD_DIR=build
 BUILD_DECKS=$(subst presentations/,$(BUILD_DIR)/,$(wildcard presentations/content/*))
 LATEX=pdflatex -output-directory $(BUILD_DIR)
 
-all: ${PRESENTATIONS}
+all: $(PRESENTATIONS)
 
 clean:
 	rm -fr presentations/$(BUILD_DIR)
