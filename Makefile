@@ -15,9 +15,14 @@ distclean: clean
 presentations/$(BUILD_DIR)/%:
 	mkdir -p $@
 
-.ONESHELL:
-presentations/%.pdf : presentations/%.tex $(BUILD_DECKS)
+define PRESENTATION_template
+.ONESHELL: $(1)
+$(1): $(subst .pdf,.tex,$(1)) $(BUILD_DECKS)
 	cd presentations
-	$(LATEX) $(notdir $<)
-	$(LATEX) $(notdir $<)
-	mv $(BUILD_DIR)/$*.pdf .
+	$(LATEX) $$(notdir $$<)
+	$(LATEX) $$(notdir $$<)
+	mv $(subst presentations/,$(BUILD_DIR)/,$(1)) .
+endef
+
+$(foreach presentation, $(PRESENTATIONS), \
+  $(eval $(call PRESENTATION_template, $(presentation))))
