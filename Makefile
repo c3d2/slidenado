@@ -16,7 +16,7 @@ presentations/$(BUILD_DIR)/%:
 	mkdir -p $@
 
 define presentation_dependencies
-	$(shell cat $(1) | perl -ne '/includedeck\{(.*)\}/ && print "presentations/content/", $$1, ".tex "')
+  $(shell perl -ne '/includedeck\{(.*)\}/ && print "presentations/content/", $$1, ".tex "' $(1))
 endef
 
 define PRESENTATION_template
