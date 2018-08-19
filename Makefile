@@ -25,10 +25,10 @@ define presentation_dependencies
   $(shell perl -ne '/includedeck\{(.*)\}/ && print "presentations/content/", $$1, ".tex "' $(1))
 endef
 
-# This template is called with arguments like ‘presentation/xxx.pdf’; it
+# This template is called with arguments like ‘presentations/xxx.pdf’; it
 # generates a rule that dependes on the corresponding tex file as well as on all
 # decks used in that tex file; dependencies are of the form
-# ‘content/ccc/ccc_lokal.tex’
+# ‘presentations/content/ccc/ccc_lokal.tex’
 
 define PRESENTATION_template
 .ONESHELL: $(1)
