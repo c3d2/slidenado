@@ -40,3 +40,18 @@ endef
 
 $(foreach presentation, $(PRESENTATIONS), \
   $(eval $(call PRESENTATION_template, $(presentation))))
+
+# This template is called with a single argument like
+# ‘presentations/content/ccc/ccc_bundesweit.tex’; it generates a rule that does
+# nothing so far.  In the future, it could depende on all images used by the tex
+# file.
+
+define DECK_template
+$(1):
+	:
+endef
+
+# Files contained in decks are only considered in the top-level directory
+
+$(foreach deck, $(wildcard presentations/content/*/*.tex), \
+  $(eval $(call DECK_template, $(deck))))
