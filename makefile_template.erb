@@ -1,9 +1,0 @@
-ALL: slides.pdf slides_with_notes.pdf
-
-slides.pdf: slides.tex <%= deck_files.join " " %>
-	pdflatex -draftmode $<
-	pdflatex $<
-
-slides_with_notes.pdf: slides_with_notes.tex <%= deck_files.join " " %>
-	pdflatex -draftmode $<
-	pdflatex $<

@@ -1,20 +1,60 @@
-INTERPRETER := ruby
-GENERATOR='./generate.rb'
+# Note: this whole makefile is a huge hack, is highly unportable, and probably
+# won’t even do what it’s supposed to do.  So, use with care, have fun :)
 
-MAKE_TARGETS=$(patsubst dates/%.yaml, dates/%/ALL, $(wildcard dates/*.yaml))
-CLEAN_TARGETS=$(patsubst dates/%.yaml, dates/%/*, $(wildcard dates/*.yaml))
-ALL: ${MAKE_TARGETS}
+PRESENTATIONS=$(patsubst %.tex, %.pdf, $(wildcard presentations/*.tex))
+BUILD_DIR=build
+BUILD_DECKS=$(subst presentations/,$(BUILD_DIR)/,$(wildcard presentations/content/*))
+LATEX=pdflatex -output-directory $(BUILD_DIR)
+
+all: $(PRESENTATIONS)
 
 clean:
-	rm -rf ${CLEAN_TARGETS}
+	rm -fr presentations/$(BUILD_DIR)
 
-# Keep Makefiles
-.SECONDARY: $(patsubst dates/%/ALL, dates/%/Makefile, $(MAKE_TARGETS))
+distclean: clean
+	rm -f presentations/*.pdf
 
-dates/%/Makefile: dates/%.yaml $(wildcard decks/*.yaml)
-	mkdir -p $(shell dirname $@)
-	command -v $(INTERPRETER) || (printf "Could not find '%s' – Please install or add it to PATH!\n" $(INTERPRETER); exit 1)
-	$(INTERPRETER) $(GENERATOR) $< $(shell dirname $@)
+# Extract dependencies for presentations by looking at the source code and
+# extracting all calls to \includedeck from them; it returns a list of elements
+# like ’presentations/content/ccc/ccc_lokal.tex’
 
-dates/%/ALL: dates/%/Makefile
-	$(MAKE) -C $(shell dirname $@)
+# Yes, we are using perl: a system that has make probably also has perl; if not,
+# blame me.
+
+define presentation_dependencies
+  $(shell perl -ne '/includedeck\{(.*)\}/ && print "presentations/content/", $$1, ".tex "' $(1))
+endef
+
+# This template is called with arguments like ‘presentations/xxx.pdf’; it
+# generates a rule that dependes on the corresponding tex file as well as on all
+# decks used in that tex file; dependencies are of the form
+# ‘presentations/content/ccc/ccc_lokal.tex’
+
+define PRESENTATION_template
+.ONESHELL: $(1)
+$(1): $(subst .pdf,.tex,$(1)) $(call presentation_dependencies,$(subst .pdf,.tex,$(1)))
+	echo $$^
+	cd presentations
+	mkdir -p $(BUILD_DECKS)
+	$(LATEX) $$(notdir $$<)
+	$(LATEX) $$(notdir $$<)
+	mv $(subst presentations/,$(BUILD_DIR)/,$(1)) .
+endef
+
+$(foreach presentation, $(PRESENTATIONS), \
+  $(eval $(call PRESENTATION_template, $(presentation))))
+
+# This template is called with a single argument like
+# ‘presentations/content/ccc/ccc_bundesweit.tex’; it generates a rule that
+# dependes on all images used by the tex file.  The actual recipe just checks
+# whether the tex file is existent and updates the timestamp.
+
+define DECK_template
+$(1): $(shell perl -ne '/includegraphics[^\{]*\{([^\}]*)\}/ && print "presentations/", $$1, " "' $(1))
+	test -f $(1) && touch $(1)
+endef
+
+# Files contained in decks are only considered at top-level.
+
+$(foreach deck, $(wildcard presentations/content/*/*.tex), \
+  $(eval $(call DECK_template, $(deck))))
